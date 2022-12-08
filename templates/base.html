@@ -11,16 +11,16 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         {% comment %} Font awesome {% endcomment %}
-        <script src="https://kit.fontawesome.com/20889b3028.js" crossorigin="anonymous"></script>
+        {% comment %} <script src="https://kit.fontawesome.com/20889b3028.js" crossorigin="anonymous"></script> {% endcomment %}
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        {% comment %} <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet"  type="text/css">
         <script src="{% static 'fontawesomefree/js/fontawesome.js' %}"></script>
         <script src="{% static 'fontawesomefree/js/solid.js' %}"></script>
         <script src="{% static 'fontawesomefree/js/brands.js' %}"></script>
         <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
-        <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css"> {% endcomment %}
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <link href="{% static 'css/custom.css' %}" rel="stylesheet">
         <link href="{% static 'css/bootstrap-datepicker.css' %}" rel="stylesheet">
@@ -48,7 +48,7 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="{% url 'Home'  %}">Home</a></li>
                                 {% comment %} <li class="nav-item"><a class="nav-link" href="/">Logout</a></li> {% endcomment %}
                                 {% comment %} <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -67,6 +67,7 @@
                 <div class="container-fluid">
                     {% block content %}
                     
+                    {% if '/Home' in request.path %} {% include "home.html" %} {% endif %}
                     
                     {% endblock content %}
                 </div>
