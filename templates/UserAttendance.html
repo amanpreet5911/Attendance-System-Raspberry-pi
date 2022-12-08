@@ -4,16 +4,19 @@
 <blockquote class='blockqoute'>
 <h1 class='text-center'><small class="display text-muted">Attendance Record of Month</small> {{month}}</h1>
 </blockquote>
+<div class="d-flex justify-content-between">
+<button class="btn btn-dark mb-2" onclick="history.back()"> <- Back</button>
+
+
 <form class="d-flex justify-content-end" action="" method="get">
 {{form.as_p}}
 <button class="m-2 btn btn-primary" type="Submit">See Records</button>
-
 </form>
+</div>
 <div class="table-responsive">
 <table  class="table table-hover table-light table-striped table-bordered">
   <thead>
     <tr>
-      <th scope="col">Employee Name</th>
       {% for date in days_list %}
       <th scope="col" class ='text-center' name="{{date|date:'d-m-Y'}}">
         {{date|date:'d/m/Y'}}
@@ -22,15 +25,11 @@
     </tr>
   </thead>
   <tbody>
-    {% for user in users %}
     <tr>
-      <th  class ='text-center' name="{{user}}" scope="row"><a href="{% url 'User-Attendance' user.id %}">{{user}}</a></th>
       {% for date in days_list  %}
-        
         <td >{{ user|gmd:date|linebreaks }}</td>
       {% endfor %}
     </tr>
-    {% endfor %}
   </tbody>
 </table>
 

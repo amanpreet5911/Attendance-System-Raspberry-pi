@@ -41,11 +41,20 @@ def AttendanceViewfunc(request):
 
 
 def UserMonthlyAttendance(request, pk=None):
-    context = {}
     if not pk:
         return redirect('Attendance')
     month = request.GET.get('month', date.today().month)
     year = date.today().year
     form = MonthlyAttendance()
     user = User.objects.get(pk=pk)
-    return render('UserAttendance.html', context)
+    # attendance = user.attendance.filter(attendance__month=int(month)).all()
+    num_days = calendar.monthrange(date.today().year, int(month))[1]
+    days = [date(year, int(month), day) for day in range(1, num_days+1)]
+    context = {
+        'form': form,
+        'user': user,
+        # 'attendance': attendance,
+        'days_list': days,
+        'month': calendar.month_name[int(month)],
+    }
+    return render(request, 'UserAttendance.html', context)

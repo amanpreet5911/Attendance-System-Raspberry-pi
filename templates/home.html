@@ -1,8 +1,13 @@
-<div class="container mt-2 border">
-<H1 class='mt-2'>Welcome to the attendance portal</H1>
+{% load static %}
+<div class="container  mt-2 border">
+<H1 class='mt-2'><small class='text-muted'>Welcome to the</small> Attendance Portal</H1>
+<div class='d-flex justify-content-center'>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum quod libero, tenetur pariatur labore quis ad eius dolore aliquid blanditiis illum animi architecto numquam autem, reiciendis eos quo, aspernatur odit?</p>
-
+<video width="720" height="340" autoplay muted>
+    <source type="video/mp4" src="{% static 'videos/Confirmed_attendance.mp4' %}">
+</video>
+<p class="w3-animate-fading">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Quibusdam quia hic perspiciatis adipisci excepturi voluptatum? Quidem molestiae reprehenderit quas tempore aut perspiciatis sed alias, ipsa voluptatem praesentium magni aperiam pariatur maxime alias a. Architecto blanditiis commodi praesentium nobis esse, delectus quibusdam nostrum quasi quae corrupti hic molestiae accusantium unde. Fugiat accusamus beatae quam pariatur, delectus ad quia labore.</p>
+</div>
 <a class="text-center btn btn-success mb-2 mx-2" href="{% url 'Attendance'  %}">Attendance</a>
 <a class="text-center btn btn-warning mb-2" href="{% url 'Users'  %}">Users</a>
 </div>
