@@ -8,6 +8,7 @@ from django.views.generic.dates import MonthArchiveView
 from django.contrib.auth.models import User
 from .models import UserProfile
 from django.db.models.query import Prefetch
+from .forms import MonthlyAttendance
 
 # Create your views here.
 
@@ -28,6 +29,7 @@ class AttendanceView(SingleTableView):
 
 class AttendanceMonthArchiveView(MonthArchiveView):
     queryset = Attendance.objects.all()
+
     def get_queryset(self):
         return Attendance.objects.filter()
     date_field = "attendance"
@@ -35,16 +37,20 @@ class AttendanceMonthArchiveView(MonthArchiveView):
 
 
 def AttendanceViewfunc(request):
+    month = request.GET.get('month', date.today().month)
     year = date.today().year
-    month = date.today().month
+    form = MonthlyAttendance()
     users = User.objects.all()
-    num_days = calendar.monthrange(date.today().year, date.today().month)[1]
-    days = [date(year, month, day) for day in range(1, num_days+1)]
+    num_days = calendar.monthrange(date.today().year, int(month))[1]
+    print(num_days)
+    days = [date(year, int(month), day) for day in range(1, num_days+1)]
     context = {
         'users': users,
         'days_list': days,
-        'month' :calendar.month_name[month],
+        'month': calendar.month_name[int(month)],
+        'form': form,
     }
+
     # We have users all month attendance list in the i.attndance
     # at = dict([(user,user.attendance.filter(attendance__month=month).all()) for user in users])
     # print(at)
@@ -67,11 +73,12 @@ def AttendanceViewfunc(request):
     #     return Attendance.objects.filter(user=user,attendance__date=date)
     return render(request, 'attendancefunc.html', context)
 
+
 def Users(request):
     users = User.objects.all()
     context = {
         'users': users,
-        
+
     }
 
     return render(request, 'users.html', context)

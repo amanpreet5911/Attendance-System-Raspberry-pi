@@ -2,6 +2,11 @@
 {% load attendance_extras %}
 {% block content %}
 <h1 class='text-center m-2'>Attendance Record of Month {{month}}</h1>
+<form class="d-flex justify-content-end" action="" method="get">
+{{form.as_p}} 
+<button class="m-2 btn btn-primary" type="Submit">Search</button>
+
+</form>
 <div class="table-responsive">
 <table  class="table table-hover table-dark table-striped table-bordered">
   <thead>
@@ -29,17 +34,3 @@
 
 </div>
 {% endblock content %} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

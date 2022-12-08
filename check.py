@@ -19,4 +19,7 @@ for days in days:
     days_str = days.strftime('%Y-%m-%d')
     days_list.append(days_str)
 
-print(days_list)
+
+for i in range(1, 13):
+    print((calendar.month_name[i], calendar.month_abbr[i]), ',')
+# print(days_list)
