@@ -3,14 +3,15 @@
 {% block content %}
 <blockquote class='blockqoute'>
 <h1 class='text-center'><small class="display text-muted">Attendance Record of Month</small> {{month}}</h1>
+<h5>User : <kbd class='text-capitalize'>{{user}}</kbd></h5>
 </blockquote>
 <div class="d-flex justify-content-between">
-<button class="btn btn-dark mb-2" onclick="history.back()"> <- Back</button>
+<button class="btn btn-dark mt-4 mx-1" style="width: 124.5px;height: 33.25px;" onclick="history.back()"> <- Back</button>
 
 
 <form class="d-flex justify-content-end" action="" method="get">
 {{form.as_p}}
-<button class="m-2 btn btn-primary" type="Submit">See Records</button>
+<button class="mt-4 mx-1 btn btn-primary" style="width: 124.5px;height: 33.25px;" type="Submit">See Records</button>
 </form>
 </div>
 <div class="table-responsive">

@@ -21,5 +21,5 @@ for days in days:
 
 
 for i in range(1, 13):
-    print((calendar.month_name[i], calendar.month_abbr[i]), ',')
+    print((i, calendar.month_name[i]), ',')
 # print(days_list)
