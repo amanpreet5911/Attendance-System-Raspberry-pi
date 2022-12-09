@@ -22,4 +22,4 @@ def get_attendance(user,date):
         else:
             l = list(a)[0]
             return l.strftime('%m/%d/%Y, %H:%M:%S %p')
-    return '--'
+    return 'No Data Available'

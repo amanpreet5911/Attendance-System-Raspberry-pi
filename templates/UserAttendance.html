@@ -11,7 +11,7 @@
 
 <form class="d-flex justify-content-end" action="" method="get">
 {{form.as_p}}
-<button class="mt-4 mx-1 btn btn-primary" style="width: 124.5px;height: 33.25px;" type="Submit"><i class="fas fa-duotone fa-magnifying-glass mx-1"></i>See Records</button>
+<button class="mt-4 mx-1 btn btn-primary" style="width: 134.5px;height: 33.25px;" type="Submit"><i class="fas fa-duotone fa-magnifying-glass mx-1"></i>See Records</button>
 </form>
 </div>
 <div class="table-responsive">
@@ -28,7 +28,7 @@
   <tbody>
     <tr>
       {% for date in days_list  %}
-        <td >{{ user|gmd:date|linebreaks }}</td>
+        <td class='text-center' >{{ user|gmd:date|linebreaks }}</td>
       {% endfor %}
     </tr>
   </tbody>
