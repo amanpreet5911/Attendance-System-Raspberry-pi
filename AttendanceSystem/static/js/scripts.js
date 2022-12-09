@@ -17,13 +17,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 });
 
-$(document).ready(function () {
-  $('#dtHorizontalVerticalExample').DataTable({
-    "scrollX": true,
-    "scrollY": 200,
-  });
-  $('.dataTables_length').addClass('bs-select');
-});
+// $(document).ready(function () {
+//   $('#dtHorizontalVerticalExample').DataTable({
+//     "scrollX": true,
+//     "scrollY": 200,
+//   });
+//   $('.dataTables_length').addClass('bs-select');
+// });
 
 // const deleteMethod = () => {
 //   let url = delbutton.value;

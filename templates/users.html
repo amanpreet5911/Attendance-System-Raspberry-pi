@@ -5,18 +5,16 @@
 <table class="container mt-3 table table-hover table-light table-striped  table-bordered">
   <thead>
     <tr>
-      <th scope="col">Employee  Name</th>
-      <th scope="col">RFID</th>
-      {% comment %} <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th> {% endcomment %}
+      <th scope="col"><i class="fas fa-duotone fa-user"></i> Employee  Name</th>
+      <th scope="col"><i class="fas fa-light fa-id-badge"></i> RFID</th>
+
     </tr>
   </thead>
   <tbody>
   {% for user in users  %}
     <tr>
-      <th scope="row">{{user}}</th>
-      <td>{% for i in user.rfid.all %} {{i.rfid}} {% endfor %}</td>
+      <th scope="row" class='text-capitalize'>{{user}}</th>
+      <td><code class='text-dark'>{% for i in user.rfid.all %} {{i.rfid}} {% endfor %} </code></td>
     </tr>
 {% endfor %}
   </tbody>
