@@ -1,5 +1,5 @@
 import datetime
-from datetime import date, timedelta 
+from datetime import date, timedelta
 import calendar
 # def daterange(start_date, end_date):
 #     for n in range(int((end_date - start_date).days)):
@@ -11,7 +11,7 @@ import calendar
 #     print(single_date.strftime("%Y-%m-%d"))
 
 year = date.today().year
-month= date.today().month
+month = date.today().month
 num_days = calendar.monthrange(year, month)[1]
 days = [datetime.date(year, month, day) for day in range(1, num_days+1)]
 days_list = []
@@ -22,4 +22,3 @@ for days in days:
 
 for i in range(1, 13):
     print((i, calendar.month_name[i]), ',')
-# print(days_list)
