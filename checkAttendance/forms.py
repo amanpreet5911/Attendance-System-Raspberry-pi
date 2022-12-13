@@ -15,6 +15,8 @@ class MonthlyAttendance(forms.Form):
                                                       (10, 'October'),
                                                       (11, 'November'),
                                                       (12, 'December'),))
+    Search_by_user = forms.CharField(required=False, widget=forms.TextInput(
+        attrs={'class': "form-control mx-2"}))
 
     def __init__(self, request, *args, **kwargs):
         super(MonthlyAttendance, self).__init__(*args, **kwargs)

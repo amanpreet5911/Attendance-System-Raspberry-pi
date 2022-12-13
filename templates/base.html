@@ -27,8 +27,8 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light"><i class="fas fa-light fa-table-columns"></i> Menu</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 " href="{% url 'Users'  %}"><i class="fas fa-duotone fa-user"></i> Employees</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'Attendance'  %}"><i class="fas fa-duotone fa-clipboard"></i> Attendance</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 " id="employee_btn" onclick="return handleEmployee();" href="{% url 'Users'  %}"><i class="fas fa-duotone fa-user"></i> Employees</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" id="attendance_btn" onclick="return handleAttendance();" href="{% url 'Attendance'  %}"><i class="fas fa-duotone fa-clipboard"></i> Attendance</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -64,5 +64,18 @@
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="{% static 'js/scripts.js' %}"></script>
+
+        <script>
+            function handleEmployee(){
+                document.getElementById("employee_btn").classList.add('disabled');
+                return true
+            }
+
+            function handleAttendance(){
+                document.getElementById("attendance_btn").classList.add('disabled');
+                return true
+            }
+
+        </script>
     </body>
 </html>

@@ -4,9 +4,14 @@
 <blockquote class='blockqoute'>
 <h1 class='text-center'><small class="display text-muted">Attendance Record of Month</small> {{month}}</h1>
 </blockquote>
+{% if search %}
+<h6>Total Search Results: {{users_count}}</h6>
+
+{% else %}
 <h6>Total Users: {{users_count}}</h6>
-<form class="d-flex justify-content-end" action="" method="get">
-{{form.as_p}}
+{% endif %}
+<form class="d-flex justify-content-end mb-2" action="" method="get">
+{{form.as_div}}
 <button class="mt-4 mx-1 btn btn-primary" style="width: 134.5px;height: 33.25px;" type="Submit"><i class="fas fa-duotone fa-magnifying-glass mx-1"></i>See Records</button>
 
 </form>
@@ -23,7 +28,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for user in users %}
+    {% for user in page_obj %}
     <tr>
       <th  class ='text-center text-capitalize' name="{{user}}" scope="row"><a href="{% url 'User-Attendance' user.id %}">{{user}}</a></th>
       {% for date in days_list  %}
@@ -34,6 +39,25 @@
     {% endfor %}
   </tbody>
 </table>
+<div class="pagination w3-center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class='w3-button'>&laquo; first</a>
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+            <a href="?page={{ page_obj.previous_page_number }}" class='w3-button'>previous</a>
+        {% endif %}
 
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class='w3-button'>next</a>
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class='w3-button' >last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 </div>
 {% endblock content %}  

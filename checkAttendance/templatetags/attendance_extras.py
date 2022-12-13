@@ -13,6 +13,9 @@ def get_monthly_attendance(user):
 @register.filter(name='gmd')
 def get_attendance(user,date):
     a =  Attendance.objects.filter(user=user,attendance__date=date).values_list('attendance',flat=True)
+    # query = Attendance.objects.filter(
+    #     user=user, attendance__date=date).values_list('attendance', flat=True).query
+    # print(query)
     if a:
         if a.count() > 1:
             l = ''
