@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'checkAttendance',
+    'accounts',
     'django_tables2',
 ]
 
@@ -88,15 +89,15 @@ WSGI_APPLICATION = 'AttendanceSystem.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "attendancesystem",
-        "PASSWORD": "12345_admin",
-        "USER": "root",
-        "HOST": "localhost",
+        "NAME": "AttendancesystemDjango",
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1'
     }
 }
 
 
-# AUTH_USER_MODEL = 'checkAttendance.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

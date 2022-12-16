@@ -43,7 +43,9 @@
                             {% if not '/Home' in request.path %} 
                                 <li class="nav-item active"><a class="nav-link" href="{% url 'Home'  %}"><i class="fas fa-duotone fa-house"></i> Home</a></li>
                             {% endif %}
-                                {% comment %} <li class="nav-item active"><a class="nav-link" href="/admin">Admin</a></li> {% endcomment %}
+                            {% if request.user.is_admin %}                            
+                                <li class="nav-item active"><a class="nav-link" href="/admin">Admin</a></li>
+                            {% endif %}
                             </ul>
                         </div>
                     </div>

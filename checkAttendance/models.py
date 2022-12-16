@@ -14,20 +14,20 @@ class Attendance(models.Model):
         return f'{self.user} {self.attendance.date()}'
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name='rfid')
-    rfid = models.CharField(max_length=20, null=True, blank=True, unique=True)
+# class UserProfile(models.Model):
+#     user = models.OneToOneField(
+#         User, on_delete=models.CASCADE, related_name='rfid')
+#     rfid = models.CharField(max_length=20, null=True, blank=True, unique=True)
 
-    @staticmethod
-    def get_rfid(self):
-        return self.rfid
+#     @staticmethod
+#     def get_rfid(self):
+#         return self.rfid
 
-    def __str__(self) -> str:
-        return f'{self.user}'
+#     def __str__(self) -> str:
+#         return f'{self.user}'
 
 
-class Profile(models.Model):
-    rfid_uid = models.PositiveSmallIntegerField()
-    name = models.CharField(max_length=100)
-    created = models.DateTimeField(auto_now_add=True)
+# class Profile(models.Model):
+#     rfid_uid = models.PositiveSmallIntegerField()
+#     name = models.CharField(max_length=100)
+#     created = models.DateTimeField(auto_now_add=True)
