@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.conf import settings
-
+import datetime
 # Create your models here.
 
 
@@ -116,7 +116,7 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return self.email or self.username
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
@@ -150,6 +150,9 @@ class User_details(models.Model):
         verbose_name = 'User Detail'
         verbose_name_plural = 'User Details'
 
+    def __str__(self) -> str:
+        return str(self.user)
+
 
 class Pi_users(models.Model):
     rfid_uid = models.CharField(max_length=255)
@@ -157,7 +160,12 @@ class Pi_users(models.Model):
     employee = models.SmallIntegerField(
         blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE, blank=True, null=True)
+                             on_delete=models.CASCADE, blank=True, null=True, related_name='rfid')
+    # created = models.DateTimeField(
+    #     auto_now_add=True, blank=True, null=True)
+
+    def __str__(self) -> str:
+        return str(self.name)
 
 
 class Pi_attendance(models.Model):
@@ -166,5 +174,5 @@ class Pi_attendance(models.Model):
     employee = models.ForeignKey(settings.AUTH_USER_MODEL,
                                  on_delete=models.CASCADE, blank=True, null=True, related_name='attendanceuser')
 
-
-
+    def __str__(self) -> str:
+        return str(self.employee) + ' ' + str(self.clock_in)

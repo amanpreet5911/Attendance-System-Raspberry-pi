@@ -14,7 +14,7 @@
   {% for user in page_obj  %}
     <tr>
       <th scope="row" class='text-capitalize'>{{user}}</th>
-      <td><code class='text-dark'>{{user.rfid.rfid}} </code></td>
+      <td><code class='text-dark'>{% for rfid in user.rfid.all %}{{rfid.rfid_uid}}{% endfor %}</code></td>
     </tr>
 {% endfor %}
   </tbody>

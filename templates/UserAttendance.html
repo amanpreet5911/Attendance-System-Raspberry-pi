@@ -3,7 +3,7 @@
 {% block content %}
 <blockquote class='blockqoute'>
 <h1 class='text-center'><small class="display text-muted">Attendance Record of Month</small> {{month}}</h1>
-<h5>User : <kbd class='text-capitalize'>{{user.get_fullname}}</kbd></h5>
+<h5>User : <kbd class='text-capitalize'>{{user.get_fullname}}</kbd> RFID:<kbd><code class='text-light'>{% for rfid in user.rfid.all %}{{rfid.rfid_uid}}{% endfor %}</code></kbd></h5>
 </blockquote>
 <div class="d-flex justify-content-between">
 <button class="btn btn-dark mt-4 mx-1" style="width: 124.5px;height: 33.25px;" onclick="history.back()"><i class="fas fa-regular fa-circle-chevron-left"></i> Back</button>
