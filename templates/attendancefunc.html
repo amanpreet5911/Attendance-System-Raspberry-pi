@@ -33,7 +33,7 @@
       <th  class ='text-center text-capitalize' name="{{user}}" scope="row"><a href="{% url 'User-Attendance' user.id %}">{{user}}</a></th>
       {% for date in days_list  %}
         
-        <td >{{ user|gmd:date|linebreaks }}</td>
+        <td >{{ user|gmd:date|linebreaks }} Late Entry: {{user|gla:date}}</td>
       {% endfor %}
     </tr>
     {% endfor %}
