@@ -18,7 +18,7 @@ def get_late_attendance(user, date=None):
         if a:
             return a.clock_in.strftime('%H:%M:%S %p')
         else:
-            return ''
+            return None
     else:
         date = datetime.now().date()
         a = Pi_attendance.objects.filter(
@@ -26,7 +26,7 @@ def get_late_attendance(user, date=None):
         if a:
             return a.clock_in.strftime('%H:%M:%S %p')
         else:
-            return ''
+            return None
     # return a.clock_in.strftime('%H:%M:%S %p')
 
 

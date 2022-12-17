@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load attendance_extras %}
+{% block content %}
+<div class="container table-responsive">
+<table class="container mt-3 table table-hover table-light table-striped  table-bordered">
+  <thead>
+    <tr>
+      <th scope="col"><i class="fas fa-duotone fa-user"></i> Employee  Name</th>
+      <th scope="col"><i class="fas fa-light fa-id-badge"></i> RFID</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for user in page_obj  %}
+    <tr>
+      <th scope="row" class='text-capitalize'>{{user}}</th>
+      <td><code class='text-dark'>{{user|gla }}</code></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class='w3-button'>&laquo; first</a>
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+            <a href="?page={{ page_obj.previous_page_number }}" class='w3-button'>previous</a>
+        {% endif %}
+
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class='w3-button'>next</a>
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class='w3-button' >last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+{% endblock content %}

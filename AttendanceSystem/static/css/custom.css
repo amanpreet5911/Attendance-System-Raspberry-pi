@@ -85,3 +85,8 @@ textarea { height: 175px; }
     border-radius: 10px;
     background-color: #ffffff;
 }
+.attendance-table-custom th:first-child,
+.attendance-table-custom td:first-child {
+    position: sticky;
+    left: -1px;
+}

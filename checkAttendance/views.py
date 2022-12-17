@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 import calendar
 from datetime import date
-from accounts.models import User
+from accounts.models import User, Pi_attendance
 from .forms import MonthlyAttendance
 from django.core.paginator import Paginator
+from datetime import datetime
+from django.db.models import Prefetch, Q
 from django.db import connection
 # from .models import Profile
 # Create your views here.
@@ -86,3 +88,24 @@ def UserMonthlyAttendance(request, pk=None):
         'month': calendar.month_name[int(month)],
     }
     return render(request, 'UserAttendance.html', context)
+
+
+def UserLateAttendance(request):
+    date_str = '10:00:00 AM'
+    late_time = datetime.strptime(date_str, '%H:%M:%S %p')
+    date = datetime.now().date()
+
+    attendance = Pi_attendance.objects.filter(
+        clock_in__date=date, clock_in__time__gte=late_time).select_related('employee').values_list('employee', flat=True)
+
+    users = User.objects.filter(id__in=attendance)
+
+    paginator = Paginator(users, 10)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'users': users.order_by('date_joined'),
+        'page_obj': page_obj,
+    }
+    return render(request, 'late.html', context)

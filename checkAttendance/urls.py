@@ -7,4 +7,5 @@ urlpatterns = [
     path('users/', Users, name='Users'),
     path('user-attendance/<int:pk>/',
          UserMonthlyAttendance, name='User-Attendance'),
+    path('late/', UserLateAttendance, name='Late'),
 ]
