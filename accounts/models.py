@@ -161,8 +161,8 @@ class Pi_users(models.Model):
         blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE, blank=True, null=True, related_name='rfid')
-    # created = models.DateTimeField(
-    #     auto_now_add=True, blank=True, null=True)
+    created = models.DateTimeField(
+        auto_now_add=True, blank=True, null=True)
 
     def __str__(self) -> str:
         return str(self.name)
