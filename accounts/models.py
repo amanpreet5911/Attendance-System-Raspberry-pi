@@ -176,3 +176,43 @@ class Pi_attendance(models.Model):
 
     def __str__(self) -> str:
         return str(self.employee) + ' ' + str(self.clock_in)
+
+
+class Leave_Category(models.Model):
+    Leave_choices=(
+        (1,'Short'),
+        (2,'Half Day'),
+        (3,'Long leave'),
+    )
+    leave_type = models.CharField(max_length = 20,choices = Leave_choices , default = '1')
+    created_by=models.IntegerField()
+    updated_by=models.IntegerField()
+    company_id=models.ForeignKey(Company_info,on_delete=models.CASCADE)
+
+
+class Leave(models.Model):
+    Leave_status=(
+        (1,'approved'),
+        (2,'pending'),
+        (3,'unapproved')
+    )
+    status = models.CharField(max_length = 20,choices = Leave_status , default = '2')
+    leave_date=models.DateTimeField()
+    leave_category=models.ForeignKey(Leave_Category,on_delete=models.CASCADE)
+    cause=models.TextField(max_length=500)
+    admin_notification_status=models.BooleanField(default=False)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now_add=True)
+    deleted_at=models.DateTimeField(auto_now_add=True)
+    in_time=models.TimeField(null=True,blank=True)
+    out_time=models.TimeField(null=True,blank=True)
+    is_late_coming=models.BooleanField(default=False)
+
+
+
+
+
+
+
+
+ 
