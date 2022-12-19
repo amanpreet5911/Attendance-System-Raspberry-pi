@@ -4,10 +4,6 @@ from datetime import date
 from accounts.models import User, Pi_attendance
 from .forms import MonthlyAttendance
 from django.core.paginator import Paginator
-from datetime import datetime
-from django.db.models import Prefetch, Q
-from django.db import connection
-# from .models import Profile
 # Create your views here.
 
 
