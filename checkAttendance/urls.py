@@ -8,4 +8,6 @@ urlpatterns = [
     path('user-attendance/<int:pk>/',
          UserMonthlyAttendance, name='User-Attendance'),
     path('late/', UserLateAttendance, name='Late'),
+    path('leave/', UserLeaveView, name='Leave'),
+    
 ]

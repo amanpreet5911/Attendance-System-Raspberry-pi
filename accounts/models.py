@@ -178,16 +178,16 @@ class Pi_attendance(models.Model):
         return str(self.employee) + ' ' + str(self.clock_in)
 
 
-class Leave_Category(models.Model):
-    Leave_choices=(
-        (1,'Short'),
-        (2,'Half Day'),
-        (3,'Long leave'),
-    )
-    leave_type = models.CharField(max_length = 20,choices = Leave_choices , default = '1')
-    created_by=models.IntegerField()
-    updated_by=models.IntegerField()
-    company_id=models.ForeignKey(Company_info,on_delete=models.CASCADE)
+# class Leave_Category(models.Model):
+#     Leave_choices=(
+#         (1,'Short'),
+#         (2,'Half Day'),
+#         (3,'Long leave'),
+#     )
+#     leave_type = models.CharField(max_length = 20,choices = Leave_choices , default = '1')
+#     created_by=models.IntegerField()
+#     updated_by=models.IntegerField()
+#     company_id=models.ForeignKey(Company_info,on_delete=models.CASCADE)
 
 
 class Leave(models.Model):
@@ -196,9 +196,15 @@ class Leave(models.Model):
         (2,'pending'),
         (3,'unapproved')
     )
+    Leave_choices=(
+        (1,'Short'),
+        (2,'Half Day'),
+        (3,'Long leave'),
+    )
+    leave_type = models.CharField(max_length = 20,choices = Leave_choices , default = '1')
     status = models.CharField(max_length = 20,choices = Leave_status , default = '2')
     leave_date=models.DateTimeField()
-    leave_category=models.ForeignKey(Leave_Category,on_delete=models.CASCADE)
+    # leave_category=models.ForeignKey(Leave_Category,on_delete=models.CASCADE)
     cause=models.TextField(max_length=500)
     admin_notification_status=models.BooleanField(default=False)
     created_at=models.DateTimeField(auto_now_add=True)

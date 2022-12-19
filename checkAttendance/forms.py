@@ -1,5 +1,7 @@
 from django import forms
+from django.forms import ModelForm
 from datetime import date
+from accounts.models import *
 
 
 class MonthlyAttendance(forms.Form):
@@ -24,3 +26,11 @@ class MonthlyAttendance(forms.Form):
             if field == 'month':
                 self.fields[field].initial = request.GET.get(
                     'month', date.today().month)
+
+
+
+class LeaveForm(ModelForm):
+    class Meta:
+        model=Leave
+        fields='__all__'
+

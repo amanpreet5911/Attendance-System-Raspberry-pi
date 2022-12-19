@@ -4,9 +4,11 @@ from datetime import date
 from accounts.models import User, Pi_attendance
 from .forms import MonthlyAttendance
 from django.core.paginator import Paginator
-from datetime import datetime
+from datetime import datetime,date
 from django.db.models import Prefetch, Q
 from django.db import connection
+from .forms import *
+import time
 # from .models import Profile
 # Create your views here.
 
@@ -92,8 +94,8 @@ def UserMonthlyAttendance(request, pk=None):
 
 def UserLateAttendance(request):
     date_str = '10:00:00 AM'
-    late_time = datetime.strptime(date_str, '%H:%M:%S %p')
-    date = datetime.now().date()
+    late_time = datetime.datetime.strptime(date_str, '%H:%M:%S %p')
+    date = datetime.datetime.now().date()
 
     attendance = Pi_attendance.objects.filter(
         clock_in__date=date, clock_in__time__gte=late_time).select_related('employee').values_list('employee', flat=True)
@@ -109,3 +111,23 @@ def UserLateAttendance(request):
         'page_obj': page_obj,
     }
     return render(request, 'late.html', context)
+
+
+def UserLeaveView(request):
+    if request.method=='GET':
+        form=LeaveForm()
+        context={
+            'form':form
+        }
+        return render(request,'leave.html',context)
+
+    if request.method=='POST':
+        form=LeaveForm(request.POST)
+        context={
+            'form':form
+        }
+        if form.is_valid():
+            form.save()
+
+        return render(request,'leave.html',context)
+
