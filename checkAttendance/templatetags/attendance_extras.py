@@ -21,13 +21,14 @@ def get_late_attendance(user, date=None):
             return None
     else:
         date = datetime.now().date()
+        custom_date = datetime.strptime('18/12/2022', '%d/%m/%Y')
         a = Pi_attendance.objects.filter(
             employee=user, clock_in__date=date, clock_in__time__gte=late_time).first()
+        print(a)
         if a:
             return a.clock_in.strftime('%H:%M:%S %p')
         else:
             return None
-    # return a.clock_in.strftime('%H:%M:%S %p')
 
 
 @register.filter(name='gmd')

@@ -39,4 +39,22 @@ import calendar
 # print(dt_obj_wo_tz)
 
 
-print(datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
+# print(datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
+
+from dateutil.relativedelta import relativedelta
+
+
+start = '22/01/2023'
+start = datetime.strptime(start, '%d/%m/%Y')
+end = datetime.strptime('19/12/2027', '%d/%m/%Y')
+
+end_date = datetime.strptime('27/12/2027', '%d/%m/%Y')
+
+while (start < end_date):
+    if start.strftime('%Y/%m') == end_date.strftime('%Y/%m'):
+        end = end_date
+        print(end)
+        print('breaking')
+        break
+    start = start + relativedelta(months=1)
+    end = end + relativedelta(months=1)
