@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 import calendar
-from datetime import date
+from datetime import datetime, date
 from accounts.models import User, Pi_attendance
 from .forms import MonthlyAttendance
 from django.core.paginator import Paginator
